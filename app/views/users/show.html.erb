@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @user.about %>
+</p>
+
+<hr />
+
+<h4>Avatar vários tamanhos</h4>
+Thumb:
+<%= image_tag(@user.avatar.thumb) if @user.avatar %>
+Medium:
+<%= image_tag(@user.avatar.medium) if @user.avatar %>
+Big:
+<%= image_tag(@user.avatar.big) if @user.avatar %>
+<hr />
+
+<h4>Documentos</h4>
+<% @user.documents.each_with_index do |document, index| %>
+  <%= link_to("Anexo #{index + 1} ", document.url, target: '_blank') %>
+  <br />
+<% end %>
+
+<hr />
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
